@@ -1,0 +1,131 @@
+<app-navbar></app-navbar>
+<div class=" container p-4 shadow-lg mt-5  wrapper bg-white rounded-3 ">
+  <div class="containers">
+    <div class="d-flex justify-content-end mt-3">
+      <button class="btn btn-primary me-2" (click)="openModal()">Add</button>
+      <button class="btn btn-success" (click)="generateReport()">Generate Report</button>
+    </div>
+  
+    <div class="table-responsive mt-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Vendor Name</th>
+            <th>Vendor Company Name</th>
+            <th>Vendor MailId</th>
+            <th>Vendor Phone number</th>
+            <th>Implementation</th>
+            <th>Client</th>
+            <th>Submitted</th>
+            <th>C2C/W2</th>
+            <th>Type</th>
+            <th>Pay Rate</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of sheetData; let i = index">
+            <td>{{ row.date }}</td>
+            <td>{{ row.vendorName }}</td>
+            <td>{{ row.vendorCompanyName }}</td>
+            <td>{{ row.vendorMailId }}</td>
+            <td>{{ row.vendorPhoneNumber }}</td>
+            <td>{{ row.implementation }}</td>
+            <td>{{ row.client }}</td>
+            <td>
+              <select class="form-select" [(ngModel)]="row.submitted" name="submitted" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </td>
+            <td>{{ row.c2cW2 }}</td>
+            <td>
+              <select class="form-select" [(ngModel)]="row.type" name="type" required>
+                <option value="Own">Own</option>
+                <option value="Recruiter">Recruiter</option>
+              </select>
+            </td>
+            <td>{{ row.payRate }}</td>
+            <td>{{ row.status }}</td>
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="deleteRow(i)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="modal" tabindex="-1" role="dialog" [ngClass]="{ 'show': showModal }">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Submission Details</h5>
+            <button type="button" class="btn-close" (click)="closeModal()"></button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="submitRow()">
+              <div class="mb-3">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date" [(ngModel)]="newRow.date" name="date" required>
+              </div>
+              <div class="mb-3">
+                <label for="vendorName">Vendor Name</label>
+                <input type="text" class="form-control" id="vendorName" [(ngModel)]="newRow.vendorName" name="vendorName" required>
+              </div>
+              <div class="mb-3">
+                <label for="vendorCompanyName">Vendor Company Name</label>
+                <input type="text" class="form-control" id="vendorCompanyName" [(ngModel)]="newRow.vendorCompanyName" name="vendorCompanyName" required>
+              </div>
+              <div class="mb-3">
+                <label for="vendorMailId">Vendor MailId</label>
+                <input type="email" class="form-control" id="vendorMailId" [(ngModel)]="newRow.vendorMailId" name="vendorMailId" required>
+              </div>
+              <div class="mb-3">
+                <label for="vendorPhoneNumber">Vendor Phone number</label>
+                <input type="text" class="form-control" id="vendorPhoneNumber" [(ngModel)]="newRow.vendorPhoneNumber" name="vendorPhoneNumber" required>
+              </div>
+              <div class="mb-3">
+                <label for="implementation">Implementation</label>
+                <input type="text" class="form-control" id="implementation" [(ngModel)]="newRow.implementation" name="implementation" required>
+              </div>
+              <div class="mb-3">
+                <label for="client">Client</label>
+                <input type="text" class="form-control" id="client" [(ngModel)]="newRow.client" name="client" required>
+              </div>
+              <div class="mb-3">
+                <label for="submitted">Submitted</label>
+                <select class="form-control" id="submitted" [(ngModel)]="newRow.submitted" name="submitted" required>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="c2cW2">C2C/W2</label>
+                <input type="text" class="form-control" id="c2cW2" [(ngModel)]="newRow.c2cW2" name="c2cW2" required>
+              </div>
+              <div class="mb-3">
+                <label for="type">Type</label>
+                <select class="form-control" id="type" [(ngModel)]="newRow.type" name="type" required>
+                  <option value="Own">Own</option>
+                  <option value="Recruiter">Recruiter</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="payRate">Pay Rate</label>
+                <input type="text" class="form-control" id="payRate" [(ngModel)]="newRow.payRate" name="payRate" required>
+              </div>
+              <div class="mb-3">
+                <label for="status">Status</label>
+                <input type="text" class="form-control" id="status" [(ngModel)]="newRow.status" name="status" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

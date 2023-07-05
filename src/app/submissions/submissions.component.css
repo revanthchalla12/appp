@@ -1,0 +1,21 @@
+
+.containers {
+    margin-top: 30px;
+  }
+  
+  .table-responsive {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .modal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal.show {
+    display: block;
+  }
+  

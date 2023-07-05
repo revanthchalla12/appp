@@ -1,0 +1,54 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <button type="button" class="btn btn-outline-light" (click)="toggleSidebar()">☰</button>
+   
+        <li><a routerLink="/profile" routerLinkActive="active current" class="nav-link px-3 text-white">Profile</a></li>
+        <li><a routerLink="/home" routerLinkActive="active current" class="nav-link px-3 text-white">Home</a></li>
+        <li><a routerLink="/dashboard" routerLinkActive="active current" class="nav-link px-3 text-white">Dashboard</a></li>
+         <li><a routerLink="/settings" routerLinkActive="active current" class="nav-link px-3 text-white">Settings</a></li>
+      </ul>
+      <div class="text-end">
+        <button type="button" class="btn btn-outline-light me-2" (click)="onlogout()">Log Out</button>
+           </div>
+    </div>
+  </div>
+</header>
+
+<div class="d-flex flex-column  p-3 text-white bg-dark mt-1" [ngClass]="{ 'd-none': sidebarHidden }" style="width: 200px; height:600px;">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a href="#" class="nav-link active" aria-current="page">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+        Home
+      </a>
+    </li>
+    <li>
+      <a routerLink="/submission" routerLinkActive="router-link-active" class="nav-link text-white">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="/submission"></use></svg>
+        Submissions
+      </a>
+    </li>
+    <li>
+      <a routerLink="/interviews" routerLinkActive="router-link-active" class="nav-link text-white">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="/interviews"></use></svg>
+        Interviews
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link text-white">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+        Assignments
+      </a>
+    </li>
+   
+  </ul>
+  <hr>
+  
+</div>
